@@ -134,9 +134,8 @@ int Run(LPTSTR cmdline = NULL, int nCmdShow = SW_SHOWDEFAULT)
     wstring rom = Mud_String::utf8toutf16(a.get<string>("rom_name"));
     wstring core = Mud_String::utf8toutf16(a.get<string>("core_name"));
     bool percore = a.exist("pergame");
-    bool thread = a.exist("threads");
     dlgMain.ShowWindow(nCmdShow);
-    dlgMain.start((TCHAR*)rom.c_str(), (TCHAR*)core.c_str(), percore, thread,true);
+    dlgMain.start((TCHAR*)rom.c_str(), (TCHAR*)core.c_str(), percore, false,true);
     int nRet = theLoop.Run(dlgMain);
     _Module.RemoveMessageLoop();
     LocalFree(cmdargptr);
